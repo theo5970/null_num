@@ -1,4 +1,8 @@
-﻿using System;
+/*
+게임화면 (핵심)
+*/
+
+using System;
 using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,10 +12,10 @@ namespace null_num
     public partial class Form2 : Form
     {
         // 무슨 배열이 이렇게나 많을까
-        ArrayList btnList = new ArrayList();
-        ArrayList numList = new ArrayList();
-        ArrayList locList = new ArrayList();
-        // 한글 배열은 3개나 있고
+        ArrayList btnList = new ArrayList(); // 버튼 동적배열
+        ArrayList numList = new ArrayList(); // 숫자 동적배열
+        ArrayList locList = new ArrayList(); // 버튼 위치 동적배열
+        // 숫자 -> 한글
         string[] lang_ko_hund = { "백", "이백", "삼백", "사백", "오백", "육백", "칠백", "팔백", "구백" };
         string[] lang_ko_ten = { "열", "스물", "서른", "마흔", "쉰", "예순", "일흔", "여든", "아흔" };
         string[] lang_ko_num = { "하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉" };
@@ -38,6 +42,7 @@ namespace null_num
             {
                 if (numList.Count > 0)
                 {
+                    // 숫자가 중복되지 않게 하기
                     while (numList.Contains(now))
                     {
                         now = random.Next(count2) + 1;
@@ -54,6 +59,7 @@ namespace null_num
             {
                 if (locList.Count > 0)
                 {
+                    // 숫자가 중복되지 않게 하기
                     while (locList.Contains(now))
                     {
                         now = random.Next(count2);
@@ -68,6 +74,11 @@ namespace null_num
         }
         public Form2(int a, int t, bool auto)
         {
+            /* 인수 설명
+            * a : 루트(실제갯수)
+            * t : 시간(단위: 초)
+            * auto : 자동으로 하는지 여부
+            */
             InitializeComponent();
             max_sizex = this.Size.Width - (padding_x*3);
             max_sizey = this.Size.Height - (padding_y*3) - button1.Size.Height - 5;
@@ -79,6 +90,7 @@ namespace null_num
             {
                 button1.Text = "다시하기";
             }
+            // 사이즈 알아서 맞추기
             int sizex = Convert.ToInt32(((float)max_sizex / count));
             int sizey = Convert.ToInt32(((float)max_sizey / count));
             for (int x=0;x<count;x++)
@@ -112,7 +124,7 @@ namespace null_num
         }
         float p = 0;
         int index = 0;
-        // 비자동모드
+        // 비자동모드 (버튼클릭으로만)
         private void Btn_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -144,7 +156,7 @@ namespace null_num
         }
         string cheer = "";
         Button currentButton;
-        // 자동모드
+        // 자동모드 (타이머 n초)
         private void GameTimer_Tick(object sender, EventArgs e)
         {
             // 진행률 퍼센트 구하기
