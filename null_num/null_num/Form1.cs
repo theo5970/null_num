@@ -1,4 +1,10 @@
-﻿using System;
+/*
+* 만든이: 김태환
+* 프로젝트 시작일: 2016-05-14 (토)~
+* 개발도구: Visual Studio 2015 Community Edition
+* 개발언어: C# /w .NET Framework 3.5
+*/
+using System;
 using System.Windows.Forms;
 
 namespace null_num
@@ -14,7 +20,7 @@ namespace null_num
         private void button1_Click(object sender, EventArgs e)
         {
             int val = Convert.ToInt32(numericUpDown1.Value);
-            bool canStart = true;
+            bool canStart = true; // 시작할 수 있는지 여부
             /*if (val == 1)
             {
                 canStart = false;
@@ -24,8 +30,10 @@ namespace null_num
             {
                 MessageBox.Show("럭키 세븐! 행운을 빌어요~", "올ㅋ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            // 시작할 수 있다면
             if (canStart)
             {
+                // 게임 창을 띄운다.
                 new Form2(val, Convert.ToInt32(numericUpDown2.Value), checkBox2.Checked).ShowDialog();
             }
         }
@@ -37,6 +45,7 @@ namespace null_num
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // 정보 확인하는 창 띄우기
             infoform = new Form3();
             infoform.StartPosition = FormStartPosition.CenterScreen;
             infoform.ShowDialog();
