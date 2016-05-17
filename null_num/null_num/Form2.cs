@@ -1,5 +1,9 @@
 /*
-게임화면 (핵심)
+* (게임화면)
+* 만든이: 김태환
+* 프로젝트 시작일: 2016-05-14 (토)~
+* 개발도구: Visual Studio 2015 Community Edition
+* 개발언어: C# /w .NET Framework 3.5
 */
 
 using System;
